@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class PointsManager : MonoBehaviour
 {
-    public Slider pointsBar;   
-    public int maxPoints = 5; 
+    public Slider pointsBar;
+    public int maxPoints = 5;
     private int currentPoints = 0;
+
+    public AudioSource pointSound;
 
     void Start()
     {
@@ -26,11 +28,15 @@ public class PointsManager : MonoBehaviour
         if (pointsBar != null)
             pointsBar.value = currentPoints;
 
+        if (pointSound != null)
+        {
+            pointSound.Play();
+        }
+
         if (currentPoints == maxPoints)
         {
             Debug.Log("Points bar is full!");
-            // To do: Trigger Successs
+            // TODO: Trigger Success
         }
     }
-
 }

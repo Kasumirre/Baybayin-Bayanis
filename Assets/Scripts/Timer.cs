@@ -10,6 +10,10 @@ public class Timer : MonoBehaviour
 
     private float timerAccumulator = 0f;
 
+    // Audio sources
+    public AudioSource secondTickSound;  
+    public AudioSource last10SecondsSound; 
+
     void Update()
     {
         if (!timerIsRunning) return;
@@ -22,6 +26,17 @@ public class Timer : MonoBehaviour
             timerAccumulator = 0f;
 
             timerText.text = timeRemaining.ToString("00");
+
+            if (timeRemaining > 10)
+            {
+                if (secondTickSound != null)
+                    secondTickSound.Play();
+            }
+            else
+            {
+                if (last10SecondsSound != null)
+                    last10SecondsSound.Play();
+            }
 
             if (timeRemaining <= 0)
             {
