@@ -13,7 +13,9 @@ public class WordFlasher : MonoBehaviour
     public float displayTime = 45f; 
     private float timer = 0f;
 
-    private Timer timerScript; 
+    private Timer timerScript;
+
+    public PointsManager pointsManager;
 
     void Start()
     {
@@ -54,6 +56,7 @@ public class WordFlasher : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            pointsManager.AddPoint();
             NextWord();
         }
     }
