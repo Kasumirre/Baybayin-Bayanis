@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PointsManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PointsManager : MonoBehaviour
         if (currentPoints == maxPoints)
         {
             Debug.Log("Points bar is full!");
-            // TODO: Trigger Success
+            SceneManager.LoadScene("VictoryScene");
         }
     }
 }
