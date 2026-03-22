@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UniversalTimer : MonoBehaviour
 {
     public static UniversalTimer Instance;
 
-    public float timeRemaining = 2700f; 
+    public float timeRemaining = 2700f; // 45 minutes
     public bool timerIsRunning = true;
 
     public TextMeshProUGUI timerText; 
@@ -20,6 +21,23 @@ public class UniversalTimer : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Stop timer if VictoryScene
+        if (scene.name == "VictoryScene")
+        {
+            timerIsRunning = false;
         }
     }
 
@@ -52,5 +70,11 @@ public class UniversalTimer : MonoBehaviour
     {
         timeRemaining = 2700f;
         timerIsRunning = true;
+    }
+
+    public void SetTimerText(TextMeshProUGUI newText)
+    {
+        timerText = newText;
+        UpdateTimerUI(); 
     }
 }

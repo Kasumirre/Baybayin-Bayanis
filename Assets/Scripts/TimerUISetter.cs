@@ -3,13 +3,13 @@ using TMPro;
 
 public class TimerUISetter : MonoBehaviour
 {
-    public TextMeshProUGUI timerText; 
+    public TextMeshProUGUI sceneTimerText; 
 
     void Start()
     {
-        if (UniversalTimer.Instance != null)
+        if (UniversalTimer.Instance != null && sceneTimerText != null)
         {
-            UniversalTimer.Instance.timerText = timerText;
+            UniversalTimer.Instance.SetTimerText(sceneTimerText);
         }
     }
 }

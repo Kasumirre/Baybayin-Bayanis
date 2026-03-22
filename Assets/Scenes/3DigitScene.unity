@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14b56402dbdc2d4ea6621a2a19362cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1071927777}
+  sceneTimerText: {fileID: 1071927777}
 --- !u!1 &1048203160
 GameObject:
   m_ObjectHideFlags: 0

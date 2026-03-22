@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14b56402dbdc2d4ea6621a2a19362cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1290522521}
+  sceneTimerText: {fileID: 1290522521}
 --- !u!4 &209116608
 Transform:
   m_ObjectHideFlags: 0

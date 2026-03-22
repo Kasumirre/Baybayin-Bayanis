@@ -475,6 +475,8 @@ MonoBehaviour:
   displayTime: 45
   pointsManager: {fileID: 1800984359}
   wrongSound: {fileID: 513807686}
+  shakeDuration: 0.5
+  shakeMagnitude: 10
 --- !u!4 &513807685
 Transform:
   m_ObjectHideFlags: 0
@@ -1711,7 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14b56402dbdc2d4ea6621a2a19362cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 2026215818}
+  sceneTimerText: {fileID: 2026215818}
 --- !u!4 &2017906130
 Transform:
   m_ObjectHideFlags: 0
