@@ -1,6 +1,8 @@
-using UnityEngine;
-using TMPro;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class WordFlasher : MonoBehaviour
 {
@@ -16,6 +18,12 @@ public class WordFlasher : MonoBehaviour
     private Timer timerScript;
 
     public PointsManager pointsManager;
+    public AudioSource wrongSound;
+
+    //Shake Effect
+    private Vector2 originalPosition;
+    public float shakeDuration = 0.5f;
+    public float shakeMagnitude = 10f;
 
     void Start()
     {
@@ -25,6 +33,8 @@ public class WordFlasher : MonoBehaviour
         {
             ShuffleAndStart();
         }
+
+        originalPosition = wordText.rectTransform.anchoredPosition;
     }
 
     void ShuffleAndStart()
@@ -51,7 +61,13 @@ public class WordFlasher : MonoBehaviour
 
         if (timer <= 0f)
         {
+            wrongSound.Play();
             NextWord();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            wrongSound.Play();
+            StartCoroutine(Shake());
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -77,5 +93,26 @@ public class WordFlasher : MonoBehaviour
         {
             timerScript.ResetTimer();
         }
+    }
+
+    IEnumerator Shake()
+    {
+        float elapsed = 0f;
+        RectTransform rect = wordText.rectTransform;
+
+        while (elapsed < shakeDuration)
+        {
+            float x = Random.Range(-1f, 1f) * shakeMagnitude;
+
+            rect.anchoredPosition = new Vector2(
+                originalPosition.x + x,
+                originalPosition.y
+            );
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rect.anchoredPosition = originalPosition;
     }
 }

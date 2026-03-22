@@ -37,7 +37,6 @@ public class PointsManager : MonoBehaviour
 
         if (currentPoints == maxPoints)
         {
-            Debug.Log("Points bar is full!");
             StartCoroutine(LoadSceneAfterDelay());
         }
     }

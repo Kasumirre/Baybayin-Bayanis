@@ -29,13 +29,11 @@ public class Timer : MonoBehaviour
 
             if (timeRemaining > 10)
             {
-                if (secondTickSound != null)
-                    secondTickSound.Play();
+                secondTickSound.Play();
             }
             else
             {
-                if (last10SecondsSound != null)
-                    last10SecondsSound.Play();
+                last10SecondsSound.Play();
             }
 
             if (timeRemaining <= 0)
