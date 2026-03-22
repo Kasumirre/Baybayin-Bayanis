@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections;
+
 
 public class CodeInput : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class CodeInput : MonoBehaviour
     public TextMeshProUGUI correctText;
     public TextMeshProUGUI wrongText;
 
-    public string correctCode = "817624";
+    public string correctCode = "";
 
     private string currentInput = "";
 
@@ -105,6 +107,8 @@ public class CodeInput : MonoBehaviour
             {
                 audioSource.PlayOneShot(correctSound);
             }
+
+            StartCoroutine(LoadSceneAfterDelay());
         }
         else
         {
@@ -151,5 +155,21 @@ public class CodeInput : MonoBehaviour
         UpdateDisplay();
 
         wrongText.gameObject.SetActive(false);
+    }
+
+    IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "StoneDiskTerminalCode")
+        {
+            SceneManager.LoadScene("3DigitScene");
+        }
+        else if (currentScene == "RiddleScene")
+        {
+            SceneManager.LoadScene("FinalPuzzle");
+        }
     }
 }
