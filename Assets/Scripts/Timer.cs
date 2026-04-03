@@ -12,11 +12,18 @@ public class Timer : MonoBehaviour
 
     // Audio sources
     public AudioSource secondTickSound;  
-    public AudioSource last10SecondsSound; 
+    public AudioSource last10SecondsSound;
 
+    public WordFlasher wordFlasher;
+    private bool isPaused = false;
     void Update()
     {
-        if (!timerIsRunning) return;
+        if (Input.GetMouseButtonDown(2))
+        {
+            isPaused = !isPaused;
+        }
+
+        if (!timerIsRunning || isPaused) return;
 
         timerAccumulator += Time.deltaTime;
 
@@ -31,13 +38,18 @@ public class Timer : MonoBehaviour
             {
                 secondTickSound.Play();
             }
-            else
+            else if (timeRemaining > 0.1)
             {
                 last10SecondsSound.Play();
             }
 
             if (timeRemaining <= 0)
             {
+                if (wordFlasher != null)
+                {
+                    wordFlasher.OnTimeUp();
+                }
+
                 ResetTimer();
             }
         }

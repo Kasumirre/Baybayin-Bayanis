@@ -11,15 +11,11 @@ public class WordFlasher : MonoBehaviour
     private List<string> shuffledWords;
     private int currentWordIndex = 0;
 
-    public float displayTime = 45f; 
-    private float timer = 0f;
-
     private Timer timerScript;
 
     public PointsManager pointsManager;
     public AudioSource wrongSound;
 
-    //Shake Effect
     private Vector2 originalPosition;
     public float shakeDuration = 0.5f;
     public float shakeMagnitude = 10f;
@@ -56,13 +52,6 @@ public class WordFlasher : MonoBehaviour
     {
         if (shuffledWords == null || shuffledWords.Count == 0) return;
 
-        timer -= Time.deltaTime;
-
-        if (timer <= 0f)
-        {
-            wrongSound.Play();
-            NextWord();
-        }
         if (Input.GetMouseButtonDown(1))
         {
             wrongSound.Play();
@@ -76,9 +65,22 @@ public class WordFlasher : MonoBehaviour
         }
     }
 
+    public void OnTimeUp()
+    {
+        if (wrongSound != null)
+            wrongSound.Play();
+
+        NextWord();
+    }
+
     void NextWord()
     {
         currentWordIndex++;
+
+        if (currentWordIndex >= shuffledWords.Count)
+        {
+            currentWordIndex = 0;
+        }
 
         DisplayCurrentWord();
     }
@@ -86,7 +88,6 @@ public class WordFlasher : MonoBehaviour
     void DisplayCurrentWord()
     {
         wordText.text = shuffledWords[currentWordIndex];
-        timer = displayTime;
 
         if (timerScript != null)
         {

@@ -472,7 +472,6 @@ MonoBehaviour:
   - Masama
   - Mahal Kita
   - Paalam
-  displayTime: 45
   pointsManager: {fileID: 1800984359}
   wrongSound: {fileID: 513807686}
   shakeDuration: 0.5
@@ -1381,6 +1380,7 @@ MonoBehaviour:
   timerText: {fileID: 105921955}
   secondTickSound: {fileID: 1993203638}
   last10SecondsSound: {fileID: 1993203637}
+  wordFlasher: {fileID: 513807684}
 --- !u!4 &1993203636
 Transform:
   m_ObjectHideFlags: 0
