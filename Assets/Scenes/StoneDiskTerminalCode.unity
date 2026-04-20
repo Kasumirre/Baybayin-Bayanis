@@ -548,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1436283865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ MonoBehaviour:
   codeText: {fileID: 738027555}
   correctText: {fileID: 1737150266}
   wrongText: {fileID: 1493842573}
-  correctCode: 817624
+  correctCode: 817824
   audioSource: {fileID: 1535749268}
   inputSound: {fileID: 8300000, guid: 083902815f8f00b48bbf1f5b00750402, type: 3}
   correctSound: {fileID: 8300000, guid: 7b06f079ecd4d004b818dd10d6100044, type: 3}
