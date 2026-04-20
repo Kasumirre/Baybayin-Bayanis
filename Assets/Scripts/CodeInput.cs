@@ -39,7 +39,7 @@ public class CodeInput : MonoBehaviour
     {
         for (int i = 0; i <= 9; i++)
         {
-            if (Input.GetKeyDown(i.ToString()))
+            if (Input.GetKeyDown(i.ToString()) || Input.GetKeyDown(KeyCode.Keypad0 + i))
             {
                 AddDigit(i.ToString());
             }
